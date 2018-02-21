@@ -1,13 +1,22 @@
 package com.pentalog.razvan.spring5didemo.controllers;
 
+import com.pentalog.razvan.spring5didemo.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
+    private GreetingService greetingService;
+
+    @Autowired
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public String hello() {
         System.out.println("Hello !!!");
 
-        return "Hello !";
+        return greetingService.sayGreeting();
     }
 }
