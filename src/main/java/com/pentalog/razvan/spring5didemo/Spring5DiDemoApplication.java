@@ -4,6 +4,7 @@ import com.pentalog.razvan.spring5didemo.controllers.ConstructorInjectedControll
 import com.pentalog.razvan.spring5didemo.controllers.MyController;
 import com.pentalog.razvan.spring5didemo.controllers.PropertyInjectedController;
 import com.pentalog.razvan.spring5didemo.controllers.SetterInjectedController;
+import com.pentalog.razvan.spring5didemo.examplebeans.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -20,5 +21,8 @@ public class Spring5DiDemoApplication {
 		System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
 		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
 		System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
+
+        FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+        System.out.println(fakeDataSource.getUser() + fakeDataSource.getUrl());
 	}
 }
